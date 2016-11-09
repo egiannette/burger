@@ -18,7 +18,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'chicago5',
-  database : 'wishes1_db'
+  database : 'burger_db'
 });
 
 connection.connect(function(err) {
@@ -34,7 +34,7 @@ connection.connect(function(err) {
 //root get route
 app.get('/', function(req,res) {
 
-    connection.query('SELECT * FROM wishes;', function(err, data) {
+    connection.query('SELECT * FROM burger_name;', function(err, data) {
       if (err) throw err;
 
       //test it
@@ -43,7 +43,7 @@ app.get('/', function(req,res) {
       //test it
       //res.send(data);
 // change this from wishes to---
-      res.render('index', {wishes : data});
+      res.render('index', {burger : data});
     });
 });
 
@@ -58,7 +58,8 @@ app.post('/create', function(req, res) {
     //test it
     //res.send('You sent, ' + req.body.event)
 
-    connection.query('INSERT INTO wishes (wish) VALUES (?)', [req.body.wish], function(err, result) {
+// figure out what to put into wishes/wish
+    connection.query('INSERT INTO burgers (burger_name) VALUES (?)', [req.body.wish], function(err, result) {
       if (err) throw err;
 
       res.redirect('/');

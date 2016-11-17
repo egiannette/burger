@@ -19,29 +19,24 @@ router.get('/burgers', function (req, res) {
 	});
 });
 
-// router.post('/burgers/create', function (req, res) {
-// 	burger.create(['name', 'sleepy'], [req.body.name, req.body.sleepy], function () {
-// 		res.redirect('/cats');
-// 	});
-// });
+router.post('/burgers/create', function (req, res) {
+	burger.create(req.body.
+		burger_name, function(result){
 
 // router.put('/cats/update/:id', function (req, res) {
 // 	var condition = 'id = ' + req.params.id;
 
-// 	console.log('condition', condition);
+		console.log(result);
+		res.redirect('/');
+	});
+});
 
-// 	cat.update({ sleepy: req.body.sleepy }, condition, function () {
-// 		res.redirect('/cats');
-// 	});
-// });
-
-// router.delete('/cats/delete/:id', function (req, res) {
-// 	var condition = 'id = ' + req.params.id;
-
-// 	cat.delete(condition, function () {
-// 		res.redirect('/cats');
-// 	});
-// });
+router.put('/burgers/update', function(req,res){
+	burger.update(req.body.burger_name, function(result){
+		console.log(result);
+		res.redirect('/');
+	});
+});
 
 
 
